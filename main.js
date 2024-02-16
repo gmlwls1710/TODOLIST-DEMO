@@ -89,16 +89,15 @@ function toggleComplete(id) {
 
 function deleteTask(id) {
   for (let i = 0; i < taskList.length; i++) {
-    if (taskList[i].id == id) {
+    if (taskList[i].id === id) {
       taskList.splice(i, 1);
-      break;
     }
   }
-  render();
+  filter();
 }
 
 function filter(event) {
-  mode = event.target.id;
+  //mode = event.target.id;
   if (event) {
     mode = event.target.id;
     underLine.style.width = event.target.offsetWidth + "px";
@@ -107,7 +106,7 @@ function filter(event) {
       event.target.offsetTop + (event.target.offsetHeight - 4) + "px";
   } // 진행중 상태에서 끝남으로 표시하면 바로 사라지는 부분은 event가 없음 그래서 조건추가
 
-  console.log("filter", event.target.id);
+  //console.log("filter", event.target.id);
   filterList = [];
   if (mode === "all") {
     //전체 리스트를 보여준다
@@ -120,8 +119,8 @@ function filter(event) {
         filterList.push(taskList[i]);
       }
     }
-    render();
-    console.log("진행중", filterList);
+    //render();
+    //console.log("진행중", filterList);
   } else if (mode === "done") {
     // 끝나는 케이스
     // task.isComplte =true
@@ -130,8 +129,8 @@ function filter(event) {
         filterList.push(taskList[i]);
       }
     }
-    render();
   }
+  render();
 }
 
 function randomIDGenerate() {
